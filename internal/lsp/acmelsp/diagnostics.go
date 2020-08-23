@@ -93,7 +93,7 @@ func (dw *diagWin) update(diags map[protocol.DocumentURI][]protocol.Diagnostic) 
 				URI:   uri,
 				Range: diag.Range,
 			}
-			fmt.Fprintf(body, "%v: %v\n", lsp.LocationLink(loc), diag.Message)
+			fmt.Fprintf(body, "%v: [%v] %v\n", lsp.LocationLink(loc), diag.Severity, diag.Message)
 		}
 	}
 	return dw.Ctl("clean")
